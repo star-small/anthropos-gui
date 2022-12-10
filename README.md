@@ -1,0 +1,3 @@
+# anthropos-gui
+The idea of ​​the project is to implement an advanced note-taking system for personal use or business
+At the stage of implementation....
