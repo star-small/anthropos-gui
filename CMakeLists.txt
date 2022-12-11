@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 project(AnthroposTracker VERSION 0.1 LANGUAGES CXX)
 
+
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -59,3 +60,4 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(AnthroposTracker)
     qt_finalize_executable(AnthroposTracker)
 endif()
+

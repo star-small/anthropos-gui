@@ -5,5 +5,8 @@
         <file>components/Feeling.qml</file>
         <file>components/Feelings.qml</file>
         <file>components/FieldComponent.qml</file>
+        <file>config/Config.qml</file>
+        <file>components/Frame.qml</file>
+        <file>config/qmldir</file>
     </qresource>
 </RCC>
