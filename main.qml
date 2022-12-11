@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
-import Qt.labs.settings 1.0
 
 import "pages"
 import "components"
@@ -17,6 +16,8 @@ Window {
     visible: true
     title: qsTr("Hello World")
     color: Config.bg_color
+
+
 /*
 
     StackView {
@@ -29,6 +30,13 @@ Window {
         id: page1
         width: parent.width
         height: parent.height
+        Button {
+            text: 'change'
+            onClicked:  {
+                Config.darkTheme = Config.darkTheme ? false : true
+            }
+            background: Frame {}
+        }
 
     }
 
