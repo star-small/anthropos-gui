@@ -1,10 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>pages/components/FieldComponent.qml</file>
         <file>pages/StartPage.qml</file>
-        <file>pages/components/Feeling.qml</file>
-        <file>pages/FeelPage.qml</file>
-        <file>pages/components/Feelings.qml</file>
+        <file>components/Feeling.qml</file>
+        <file>components/Feelings.qml</file>
+        <file>components/FieldComponent.qml</file>
     </qresource>
 </RCC>

@@ -2,9 +2,10 @@ import QtQuick 2.15
 
 Item {
     property string feelColor: 'grey'
-    width:70
+    width:200
     height: width
     Rectangle {
+        id: rect
         color: feelColor
         anchors.fill: parent
         radius: 100

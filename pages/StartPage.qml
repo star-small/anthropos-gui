@@ -1,13 +1,15 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.0
-import "components"
+import QtQuick.LocalStorage 2.0
+
+import "../components"
 Item {
     id: root
-    signal clickPressed(status: bool)
+
     FieldComponent {
         id: field
         anchors.centerIn: parent
-
+        signal choose(bool status)
     }
 
     Button {
@@ -20,8 +22,34 @@ Item {
             anchors.centerIn: parent
         }
         onPressed: {
-            root.clickPressed(true)
+            popup.open()
         }
+    }
+    Popup {
+        id: popup
+        width: parent.width
+        height: 50
+        anchors.centerIn: parent
+        modal: true
+        focus: true
+        topPadding: 0
+        bottomPadding: 0
+        background: Rectangle {
+            anchors.fill: parent
+            color: "transparent"
+        }
+        Feelings {
+            widthSq: parent.height
+            parentWidth: parent.width
+            //spaces: 3
+            width: parent.width
+            onFeelClicked: (choose)=>{
+                field.choose(true)
+                popup.close()
+
+            }
+        }
+
     }
 
 }
