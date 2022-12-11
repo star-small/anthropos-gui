@@ -38,9 +38,14 @@ Item {
             anchors.fill: parent
             color: "transparent"
         }
+        Text {
+            id: txt
+            text: qsTr("Оцените своё текущее состание по этой шкале:")
+        }
         Feelings {
             widthSq: parent.height
             parentWidth: parent.width
+            anchors.top: txt.bottom
             //spaces: 3
             width: parent.width
             onFeelClicked: (choose)=>{

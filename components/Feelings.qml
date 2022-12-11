@@ -5,10 +5,12 @@ Item {
     property int parentWidth: 0
     signal feelClicked(int choose)
     height: widthSq
+
     Rectangle {
         id: rect
         anchors.fill: parent
         color: "transparent"
+
         ListModel {
             id: listModel
             ListElement {color: "red"}

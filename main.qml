@@ -3,17 +3,22 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Material 2.0
 import Qt.labs.settings 1.0
+
 import "pages"
 import "components"
+import "config"
 
 Window {
+
+
     id: window
     width: 412 - 70
     height: 732 -70
     visible: true
     title: qsTr("Hello World")
-    color: "lightgrey"
+    color: Config.bg_color
 /*
+
     StackView {
         id: stackView
         initialItem: page1
@@ -24,7 +29,6 @@ Window {
         id: page1
         width: parent.width
         height: parent.height
-
 
     }
 
