@@ -2,11 +2,12 @@ import QtQuick 2.15
 import "../config"
 Item {
     width: 412 - 70
-    height: 732 -70
+    height: 50
+    signal barBtnClicked()
     Rectangle {
         color: Config.frame_color
         width: parent.width
-        height: 50
+        height: parent.height
         Text {
             id: label
             text: qsTr("Anthropos")
@@ -20,9 +21,11 @@ Item {
             anchors.right: parent.right
             BurgerMenuButton {
                 btnColor: Config.frame_color2
-
-                width: parent.height-10; height: parent.height-30
+                width: parent.height-20; height: parent.height-30
                 anchors.centerIn: parent
+                onBurgerClicked: {
+                    barBtnClicked()
+                }
             }
         }
     }

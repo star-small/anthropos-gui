@@ -68,10 +68,4 @@ Item {
         }
 
     }
-
-
-    Component.onCompleted: {
-        var db = LocalStorage.openDatabaseSync("../config/db.sqlite")
-    }
-
 }
