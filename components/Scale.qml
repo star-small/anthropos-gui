@@ -1,4 +1,6 @@
 import QtQuick 2.15
+
+// State of User
 Item {
     id: root
     property int widthSq: 10
@@ -26,7 +28,7 @@ Item {
             anchors.fill: parent
             model: listModel
             cellWidth: parentWidth/listModel.count
-
+            interactive: false
             delegate:
                 Rectangle {
                     height: widthSq
