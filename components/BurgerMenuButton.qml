@@ -3,7 +3,7 @@ import "../config"
 Item {
     id: burger
 
-    signal burgerClicked(status: bool)
+    signal burgerClicked()
     property string btnColor
     property int thikness: height/5
     Rectangle {
@@ -129,7 +129,7 @@ Item {
             inTop.state = inTop.state=="show" ? "hide" : "show"
             inCenter.state = inCenter.state == "show" ? "hide" : "show"
             inBottom.state = inBottom.state == "show" ? "hide" : "show"
-            inTop.state=="show" ? burger.burgerClicked(true) : burger.burgerClicked(false)
+            burgerClicked()
         }
     }
 

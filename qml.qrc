@@ -11,5 +11,6 @@
         <file>pages/MainPage.qml</file>
         <file>components/CsTopBar.qml</file>
         <file>components/BurgerMenuButton.qml</file>
+        <file>components/CsButton.qml</file>
     </qresource>
 </RCC>
