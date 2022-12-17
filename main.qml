@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
-import QtQuick.Controls 2.0
-import QtQuick.Controls.Material 2.0
+import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 
 import "pages"
 import "components"
@@ -18,18 +18,28 @@ Window {
     color: Config.bg_color
 
 
-/*
+
 
     StackView {
         id: stackView
-        initialItem: page1
+        initialItem: startPage
         anchors.fill: parent
+        pushEnter: Transition {
+                PropertyAnimation {
+                    property: "x"
+                    easing.type: Easing.OutQuad
+                    from: window.width
+                    to:0
+                    duration: 200
+                }
+            }
     }
-*/
+
     StartPage {
-        id: page1
+        id: startPage
         width: parent.width
         height: parent.height
+
         Button {
             text: 'change'
             onClicked:  {
@@ -38,15 +48,20 @@ Window {
             background: Frame {}
         }
 
+        onMainFeelClicked: {
+            stackView.push(mainPage)
+        }
+
+
+
     }
 
-/*
-    FeelPage {
-        id: secPage
+    MainPage {
+        id: mainPage
+        visible: false
         width: parent.width
         height: parent.height
-        visible: false
     }
-*/
+
 }
 

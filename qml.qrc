@@ -3,10 +3,13 @@
         <file>main.qml</file>
         <file>pages/StartPage.qml</file>
         <file>components/Feeling.qml</file>
-        <file>components/Feelings.qml</file>
+        <file>components/Scale.qml</file>
         <file>components/FieldComponent.qml</file>
         <file>config/Config.qml</file>
         <file>components/Frame.qml</file>
         <file>config/qmldir</file>
+        <file>pages/MainPage.qml</file>
+        <file>components/CsTopBar.qml</file>
+        <file>components/BurgerMenuButton.qml</file>
     </qresource>
 </RCC>

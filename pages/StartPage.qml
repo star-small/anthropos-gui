@@ -1,17 +1,15 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.0
-
-import QtQuick.LocalStorage 2.0
+import QtQuick.Controls 2.15
 
 import "../components"
 import "../config"
 Item {
     id: root
+    signal mainFeelClicked()
 
     FieldComponent {
         id: field
         anchors.centerIn: parent
-        signal choose(bool status)
     }
 
     Button {
@@ -35,8 +33,6 @@ Item {
         background: Frame {}
     }
 
-
-
     Popup {
         id: popup
         width: parent.width
@@ -57,7 +53,7 @@ Item {
             anchors.centerIn: parent
             color: Config.text_color
         }
-        Feelings {
+        Scale {
             widthSq: parent.height
             parentWidth: parent.width
             anchors.top: txt.bottom
@@ -65,11 +61,17 @@ Item {
             //spaces: 3
             width: parent.width
             onFeelClicked: (choose)=>{
-                field.choose(true)
                 popup.close()
+                root.mainFeelClicked()
+                mainFeelClicked()
             }
         }
 
+    }
+
+
+    Component.onCompleted: {
+        var db = LocalStorage.openDatabaseSync("../config/db.sqlite")
     }
 
 }
