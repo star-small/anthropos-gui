@@ -8,15 +8,41 @@ Item {
 
     property bool darkTheme: true
 
-    readonly property string bg_color: darkTheme ? "#272932" : "#B6C2D9"
-    readonly property string frame_color: darkTheme ? "#4D7EA8" : "#35CE8D"
-    readonly property string frame_color2: darkTheme ? "#396285" : "#269164"
-    readonly property string text_color: darkTheme ? "white" : "black"
-    readonly property string spare_color: "#CE8147"
+    property string bg_color: darkTheme ? "#272932" : "#B6C2D9"
+    property string frame_color: darkTheme ? "#4D7EA8" : "#35CE8D"
+    property string frame_color2: darkTheme ? "#396285" : "#269164"
+    property string text_color: darkTheme ? "white" : "black"
+    property string spare_color: "#CE8147"
+
+    Behavior on bg_color {
+        ColorAnimation {
+            easing.type: Easing.InQuad
+            duration: 300
+        }
+    }
+    Behavior on text_color {
+        ColorAnimation {
+            easing.type: Easing.InQuad
+            duration: 400
+        }
+    }
+    Behavior on frame_color {
+        ColorAnimation {
+            easing.type: Easing.InQuad
+            duration: 400
+        }
+    }
+    Behavior on frame_color2 {
+        ColorAnimation {
+            easing.type: Easing.InQuad
+            duration: 400
+        }
+    }
 
     Settings {
         property alias darkTheme: config.darkTheme
     }
+
 
 
 }

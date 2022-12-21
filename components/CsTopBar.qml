@@ -3,6 +3,7 @@ import "../config"
 Item {
     width: 412 - 70
     height: 50
+    property string btnState: "show"
     signal barBtnClicked()
     Rectangle {
         color: Config.frame_color
@@ -20,13 +21,19 @@ Item {
             color: "transparent"
             anchors.right: parent.right
             BurgerMenuButton {
+                id: burger
                 btnColor: Config.frame_color2
+                state: btnState
                 width: parent.height-20; height: parent.height-30
                 anchors.centerIn: parent
-                onBurgerClicked: {
-                    barBtnClicked()
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        btnState = parent.state === "show" ? "hide" : "show"
+                    }
                 }
             }
+
         }
     }
 }

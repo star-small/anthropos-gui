@@ -40,10 +40,8 @@ else()
         )
     endif()
 endif()
-
 target_link_libraries(AnthroposTracker
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
-
 set_target_properties(AnthroposTracker PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}

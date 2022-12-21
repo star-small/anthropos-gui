@@ -3,6 +3,7 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 
+
 import "pages"
 import "components"
 import "config"
@@ -16,7 +17,6 @@ Window {
     visible: true
     title: qsTr("Hello World")
     color: Config.bg_color
-
 
 
 
