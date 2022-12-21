@@ -6,12 +6,13 @@ Item {
     signal burgerClicked()
     property string btnColor
     property int thikness: height/5
+    state: "show"
     Rectangle {
         id: inTop
         color: btnColor
         height: thikness
         width: parent.width
-        state: "show"
+        state: parent.state
         radius: 20
         states: [
             State {
@@ -51,7 +52,7 @@ Item {
         height: thikness
         width: parent.width
         anchors.centerIn: parent
-        state:"show"
+        state:parent.state
         radius: 20
 
         states: [
@@ -87,7 +88,7 @@ Item {
         color: btnColor
         height: thikness
         width: parent.width
-        state: "show"
+        state: parent.state
         radius: 20
 
         states: [
@@ -122,15 +123,4 @@ Item {
             }
         }
     }
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            inTop.state = inTop.state=="show" ? "hide" : "show"
-            inCenter.state = inCenter.state == "show" ? "hide" : "show"
-            inBottom.state = inBottom.state == "show" ? "hide" : "show"
-            burgerClicked()
-        }
-    }
-
 }

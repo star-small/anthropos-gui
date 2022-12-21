@@ -7,6 +7,7 @@ Item {
     property int csRadius: 0
     property double csOpacity: 1
     property alias csAnchor: txt.anchors
+
     Text {
         id: txt
         text: qsTr(csText)

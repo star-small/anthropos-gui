@@ -6,7 +6,6 @@ import QtQuick.Window 2.15
 import "../config"
 import "../components"
 Item {
-    property bool leftSideOpen: false
     TabBar {
         id: bar
         width: parent.width
@@ -69,18 +68,26 @@ Item {
                         }
                     }
                 }
-
+            onClosed: {
+                topBar.btnState = "show"
             }
+            onOpened: {
+                topBar.btnState = "hide"
+            }
+        }
+
     }
+
 
     CsTopBar {
         id: topBar
         width: parent.width
         anchors.top: parent.top
-        onBarBtnClicked: {
-            leftSideOpen = leftSideOpen ? false : true
-            leftSideOpen ? sidePanel.open() : sidePanel.close()
+        onBtnStateChanged: {
+            console.log(topBar.btnState)
+            topBar.btnState == "hide" ? sidePanel.open() : sidePanel.close()
         }
+
     }
 
 
