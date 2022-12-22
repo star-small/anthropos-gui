@@ -38,16 +38,7 @@ Window {
     StartPage {
         id: startPage
         width: parent.width
-        height: parent.height
-
-        Button {
-            text: 'change'
-            onClicked:  {
-                Config.darkTheme = Config.darkTheme ? false : true
-            }
-            background: Frame {}
-        }
-
+        visible: true
         onMainFeelClicked: {
             stackView.push(mainPage)
         }
@@ -59,6 +50,7 @@ Window {
     MainPage {
         id: mainPage
         visible: false
+        enabled: false
         width: parent.width
         height: parent.height
     }

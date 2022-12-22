@@ -2,7 +2,6 @@ import QtQuick 2.15
 import "../config"
 Item {
     width: 412 - 70
-    height: 50
     property string btnState: "show"
     signal barBtnClicked()
     Rectangle {
