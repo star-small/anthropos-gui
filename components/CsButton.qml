@@ -7,7 +7,7 @@ Item {
     property int csRadius: 0
     property double csOpacity: 1
     property alias csAnchor: txt.anchors
-
+    property string csHighlight
     Text {
         id: txt
         text: qsTr(csText)
@@ -35,24 +35,8 @@ Item {
     Rectangle {
         id: rect
         anchors.fill: parent
-        color: Config.frame_color
+        color: csHighlight
         radius: csRadius
         opacity: csOpacity
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            csClicked()
-        }
-        onPressed: {
-            rect.color = Config.frame_color2
-        }
-        onReleased: {
-            rect.color = Config.frame_color
-        }
-        onCanceled: {
-            rect.color = Config.frame_color
-        }
-    }
     }
 }

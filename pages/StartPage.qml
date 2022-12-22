@@ -13,6 +13,14 @@ Item {
     }
 
     Button {
+        text: 'change'
+        onClicked:  {
+            Config.darkTheme = Config.darkTheme ? false : true
+        }
+        background: Frame {}
+    }
+
+    Button {
         id: btn
         width: name.width+10
         height: name.height+10

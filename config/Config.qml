@@ -29,7 +29,7 @@ Item {
     Behavior on frame_color {
         ColorAnimation {
             easing.type: Easing.InQuad
-            duration: 400
+            duration: 500
         }
     }
     Behavior on frame_color2 {
