@@ -52,6 +52,9 @@ Window {
         visible: false
         width: parent.width
         height: parent.height
+        onToBackClicked: {
+            stackView.pop()
+        }
     }
 
 }
