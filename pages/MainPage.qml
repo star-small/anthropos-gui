@@ -34,7 +34,6 @@ Item {
                 }
             }
             Component.onCompleted: {
-                console.log(root.visible)
             }
         onClosed: {
             topBar.btnState = "show"
@@ -47,19 +46,34 @@ Item {
 
 
     CsTopBar {
-        height: 50
         id: topBar
+        height: 50
+        width: parent.width
         onBtnStateChanged: {
             console.log(topBar.btnState)
             topBar.btnState == "hide" ? sidePanel.open() : sidePanel.close()
         }
+        onBarBtnClicked: {
+            console.log("click!")
+        }
 
     }
 
-    Text {
-        id: name
-        text: qsTr("tsrrrrrrrrrext")
-        color: Config.text_color
+    Page {
+        id: content
+        anchors.top: topBar.bottom
+        anchors.bottom: bar.top
+        width: parent.width
+        background: Rectangle {
+            color: Config.bg_color
+        }
+        Text {
+            anchors.fill: parent
+            id: name
+            text: qsTr(" Lorem ipsucm dolor sit amet, consectetur adipiscing elit. Quisque vel pulvinar sapien, nec pharetra leo. Aliquam non mauris ac lacus commodo consectetur. Maecenas mollis magna a dolor ornare laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eu porttitor sem. Sed lacinia, arcu nec tincidunt molestie, sem felis consequat velit, id tristique orci elit eget quam. Curabitur eu accumsan erat. Maecenas vel ultricies dui. Fusce efficitur felis augue, non commodo nulla suscipit at. In a purus urna. Pellentesque pulvinar faucibus nulla vitae iaculis. Morbi euismod nisi id aliquam maximus. Proin tempor lorem in felis aliquam, et malesuada purus blandit. Vestibulum sed laoreet lorem, id sodales ipsum. Suspendisse ullamcorper tortor vulputate commodo fermentum. ")
+            wrapMode: Text.WordWrap
+            color: Config.text_color
+        }
     }
 
 
@@ -69,36 +83,30 @@ Item {
         height: 30
         anchors.bottom: parent.bottom
         TabButton {
-            indicator: CsButton {
-                height: bar.height
-                csText: "Main"
-                csHighlight: Config.frame_color2
-            }
-            background: CsButton {
-                height: bar.height
-                csText: "Main"
-                csHighlight: Config.frame_color
-            }
+            id: tb
+            text: "Home"
         }
         TabButton {
-            indicator: CsButton {
-                height: bar.height
-                csText: "Stat"
-                csHighlight: Config.frame_color2
-            }
-            background: CsButton {
-                height: bar.height
-                csText: "Stat"
-                csHighlight: Config.frame_color
-            }
+            text: "Statistics"
         }
         TabButton {
-            background: CsButton {
-                height: bar.height
-                csText: "Settings"
-            }
+            text: "Settings"
+        }
+        onWidthChanged: {
+            console.log(bar.currentItem.x, bar.currentIndex)
         }
     }
+    Rectangle {
+                id : decorator;
+                x: bar.currentItem.width * bar.currentIndex+1
+                anchors.bottom: bar.top;
+                width: tb.width;
+                height: 3;
+                color: Config.text_color
+                Behavior on x {
+                    NumberAnimation {duration:200}
+                }
+            }
 
 
 
