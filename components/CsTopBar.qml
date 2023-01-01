@@ -10,10 +10,11 @@ Item {
         height: parent.height
         Text {
             id: label
-            text: qsTr("Anthropos")
+            text: "ΑΝΘΡΟΠΟΣ"
             anchors.centerIn: parent
             color: Config.text_color
-            font.pixelSize: 20
+            font.pixelSize: 30
+            antialiasing: true
         }
         Rectangle {
             width: parent.height; height: parent.height

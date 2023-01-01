@@ -50,9 +50,11 @@ Window {
     MainPage {
         id: mainPage
         visible: false
-        enabled: false
         width: parent.width
         height: parent.height
+        onToBackClicked: {
+            stackView.pop()
+        }
     }
 
 }

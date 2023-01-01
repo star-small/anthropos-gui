@@ -48,19 +48,19 @@ Item {
 
     Rectangle {
         id: inCenter
-
         height: thikness
         width: parent.width
         anchors.centerIn: parent
-        state:parent.state
-        radius: 20
+        state: parent.state
+        //color: btnColor
 
+        radius: 20
         states: [
             State {
                 name: "show"
                 PropertyChanges {
                     target: inCenter
-                    color: btnColor
+                    color: inBottom.color
                 }
             },
             State {
