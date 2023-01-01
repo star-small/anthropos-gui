@@ -16,7 +16,7 @@ Item {
         clip: true
         font.pixelSize: 15
         horizontalAlignment: "AlignHCenter"
-        placeholderText: "Поделись впечатлениями"
+        placeholderText: "Новое событие"
         background: Rectangle {
                     radius: 10
                     color: Config.frame_color

@@ -18,25 +18,25 @@ Item {
     Behavior on bg_color {
         ColorAnimation {
             easing.type: Easing.InQuad
-            duration: 300
+            duration: 200
         }
     }
     Behavior on text_color {
         ColorAnimation {
             easing.type: Easing.InQuad
-            duration: 400
+            duration: 200
         }
     }
     Behavior on frame_color {
         ColorAnimation {
             easing.type: Easing.InQuad
-            duration: 500
+            duration: 200
         }
     }
     Behavior on frame_color2 {
         ColorAnimation {
             easing.type: Easing.InQuad
-            duration: 400
+            duration: 200
         }
     }
 

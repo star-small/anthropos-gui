@@ -1,6 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-
+import QtQuick.Controls.Material 2.15
 import "../components"
 import "../config"
 Item {
@@ -56,7 +56,7 @@ Item {
         }
         Text {
             id: txt
-            text: qsTr("Оцените ваше состание по этой шкале:")
+            text: qsTr("Оцените событие по этой шкале:")
             font.pixelSize: 13
             anchors.centerIn: parent
             color: Config.text_color

@@ -17,28 +17,42 @@ Item {
             interactive: root.visible
             background: Rectangle {
                 color: Config.darkFrame
-                ListView {
-                    anchors.topMargin: 0
-                    anchors.rightMargin: -10
-                    id: listView
-                    anchors.fill: parent
-                    spacing: 5
-                    model: ["ToDo", "New Event", "Pomodoro", "Journal"]
-                    delegate: CsButton {
-                        csOpacity: 0.3
-                        csRadius: 0
-                        csHighlight: Config.frame_color2
-                        width: sidePanel.width
+                    Rectangle {
+                        id: events
+                        opacity: 1.0
+                        radius: 0
+                        width: parent.width
                         height: 40
-                        csText: modelData
+                        color: Config.frame_color
+                        Text {
+                            id: name
+                            anchors.centerIn: parent
+                            opacity: 1
+                            color: Config.text_color
+                            text: qsTr("Events")
+                        }
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                toBackClicked()
+                                stackView.replace(eventPage)
                                 sidePanel.close()
                             }
                         }
                     }
+                    Rectangle {
+                        opacity: 1.0
+                        radius: 0
+                        width: parent.width
+                        height: 40
+                        y: events.height + 5
+                        color: Config.frame_color
+                        Text {
+                            anchors.centerIn: parent
+                            opacity: 1
+                            color: Config.text_color
+                            text: qsTr("To do")
+                        }
+
                 }
             }
             Component.onCompleted: {
@@ -68,6 +82,23 @@ Item {
 
     }
 
+    StackView {
+        id: stackView
+        initialItem:content
+        anchors.fill: parent
+        replaceEnter: Transition {
+            PropertyAnimation {
+                property: "x"
+                easing.type: Easing.Linear
+                from: window.width
+                to:0
+                duration: 200
+            }
+
+        }
+    }
+
+
     Page {
         id: content
         anchors.top: topBar.bottom
@@ -77,21 +108,55 @@ Item {
         background: Rectangle {
             color: Config.bg_color
         }
-        Flickable {
+        Column {
             id: flick
             anchors.fill: parent
-            contentHeight: 0; contentWidth: parent.width
-
+            spacing: 2
+                width: parent.width
+                height: name.height
             Text {
                 z: -1
                 anchors.fill: parent
-                id: name
-                text: qsTr(" Lorem ipsucm dolor sit amet, consectetur adipiscing elit. Quisque vel pulvinar sapien, nec pharetra leo. Aliquam non mauris ac lacus commodo consectetur. Maecenas mollis magna a dolor ornare laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eu porttitor sem. Sed lacinia, arcu nec tincidunt molestie, sem felis consequat velit, id tristique orci elit eget quam. Curabitur eu accumsan erat. Maecenas vel ultricies dui. Fusce efficitur felis augue, non commodo nulla suscipit at. In a purus urna. Pellentesque pulvinar faucibus nulla vitae iaculis. Morbi euismod nisi id aliquam maximus. Proin tempor lorem in felis aliquam, et malesuada purus blandit. Vestibulum sed laoreet lorem, id sodales ipsum. Suspendisse ullamcorper tortor vulputate commodo fermentum. ")
+                id: contentText
+                text: qsTr(" Lorem ipsucm dolor sit amet, consectetur adipiscing elit. Quisque vel pulvinar sapien, nec pharetra leo. Aliquam non mauris ac lacus commodo consectetur. Maecenas mollis magna a dolor ornare laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eu porttitor sem. Sed lacinia, arcu nec tincidunt molestie, sem felis consequat velit, id tristique orci elit eget quam. Curabitur eu accumsan erat. Maecenas vel ultricies dui. Fusce efficitur felis augue, non commodo nulla suscipit at. In a purus urna. Pellentesque pulvinar faucibus nulla vitae iaculis. Morbi euismod nisi id aliquam maximus. Proin tempor lorem in felis aliquam, et malesuada purus blandit. Vestibulum sed laoreet lorem, id sodales ipsum. Suspendisse ullamcorper tortor vulputate commodo fermentum.Lorem ipsucm dolor sit amet, consectetur adipiscing elit. Quisque vel pulvinar sapien, nec pharetra leo. Aliquam non mauris ac lacus commodo consectetur. Maecenas mollis magna a dolor ornare laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eu porttitor sem. Sed lacinia, arcu nec tincidunt molestie, sem felis consequat velit, id tristique orci elit eget quam. Curabitur eu accumsan erat. Maecenas vel ultricies dui. Fusce efficitur felis augue, non commodo nulla suscipit at. In a purus urna. Pellentesque pulvinar faucibus nulla vitae iaculis. Morbi euismod nisi id aliquam maximus. Proin tempor lorem in felis aliquam, et malesuada purus blandit. Vestibulum sed laoreet lorem, id sodales ipsum. Suspendisse ullamcorper tortor vulputate commodo fermentum. Lorem ipsucm dolor sit amet, consectetur adipiscing elit. Quisque vel pulvinar sapien, nec pharetra leo. Aliquam non mauris ac lacus commodo consectetur. Maecenas mollis magna a dolor ornare laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eu porttitor sem. Sed lacinia, arcu nec tincidunt molestie, sem felis consequat velit, id tristique orci elit eget quam. Curabitur eu accumsan erat. Maecenas vel ultricies dui. Fusce efficitur felis augue, non commodo nulla suscipit at. In a purus urna. Pellentesque pulvinar faucibus nulla vitae iaculis. Morbi euismod nisi id aliquam maximus. Proin tempor lorem in felis aliquam, et malesuada purus blandit. Vestibulum sed laoreet lorem, id sodales ipsum. Suspendisse ullamcorper tortor vulputate commodo fermentum.Lorem ipsucm dolor sit amet, consectetur adipiscing elit. Quisque vel pulvinar sapien, nec pharetra leo. Aliquam non mauris ac lacus commodo consectetur. Maecenas mollis magna a dolor ornare laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eu porttitor sem. Sed lacinia, arcu nec tincidunt molestie, sem felis consequat velit, id tristique orci elit eget quam. Curabitur eu accumsan erat. Maecenas vel ultricies dui. Fusce efficitur felis augue, non commodo nulla suscipit at. In a purus urna. Pellentesque pulvinar faucibus nulla vitae iaculis. Morbi euismod nisi id aliquam maximus. Proin tempor lorem in felis aliquam, et malesuada purus blandit. Vestibulum sed laoreet lorem, id sodales ipsum. Suspendisse ullamcorper tortor vulputate commodo fermentum.Lorem ipsucm dolor sit amet, consectetur adipiscing elit. Quisque vel pulvinar sapien, nec pharetra leo. Aliquam non mauris ac lacus commodo consectetur. Maecenas mollis magna a dolor ornare laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eu porttitor sem. Sed lacinia, arcu nec tincidunt molestie, sem felis consequat velit, id tristique orci elit eget quam. Curabitur eu accumsan erat. Maecenas vel ultricies dui. Fusce efficitur felis augue, non commodo nulla suscipit at. In a purus urna. Pellentesque pulvinar faucibus nulla vitae iaculis. Morbi euismod nisi id aliquam maximus. Proin tempor lorem in felis aliquam, et malesuada purus blandit. Vestibulum sed laoreet lorem, id sodales ipsum. Suspendisse ullamcorper tortor vulputate commodo fermentum.Lorem ipsucm dolor sit amet, consectetur adipiscing elit. Quisque vel pulvinar sapien, nec pharetra leo. Aliquam non mauris ac lacus commodo consectetur. Maecenas mollis magna a dolor ornare laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eu porttitor sem. Sed lacinia, arcu nec tincidunt molestie, sem felis consequat velit, id tristique orci elit eget quam. Curabitur eu accumsan erat. Maecenas vel ultricies dui. Fusce efficitur felis augue, non commodo nulla suscipit at. In a purus urna. Pellentesque pulvinar faucibus nulla vitae iaculis. Morbi euismod nisi id aliquam maximus. Proin tempor lorem in felis aliquam, et malesuada purus blandit. Vestibulum sed laoreet lorem, id sodales ipsum. Suspendisse ullamcorper tortor vulputate commodo fermentum.")
+                font.pointSize: 9
                 wrapMode: Text.WordWrap
                 color: Config.text_color
             }
+
+
         }
 
+    }
+    Page {
+        id: statistics
+        anchors.top: topBar.bottom
+        visible: false
+        height: parent.height -bar.height
+        width: parent.width
+        background: Rectangle {
+            color: "red"
+        }
+    }
+    Page {
+        id: settings
+        anchors.top: topBar.bottom
+        visible: false
+        width: parent.width
+        height: parent.height -bar.height
+        background: Rectangle {
+            color: "green"
+        }
+    }
+    Page {
+        id: eventPage
+        anchors.top: topBar.bottom
+        visible: false
+        width: parent.width
+        height: parent.height -bar.height
+        background: Rectangle {
+            color: "green"
+        }
     }
 
 
@@ -103,16 +168,29 @@ Item {
         TabButton {
             id: tb
             text: "Home"
+
+            onClicked:{
+                stackView.replace(content)
+
+            }
+            onWidthChanged: console.log(height)
         }
         TabButton {
             text: "Statistics"
+            onClicked: {
+
+                stackView.replace(statistics)
+
+
+            }
         }
         TabButton {
             text: "Settings"
+            onClicked: {
+                stackView.replace(settings)
+            }
         }
-        onWidthChanged: {
-            console.log(bar.currentItem.x, bar.currentIndex)
-        }
+
     }
     Rectangle {
                 id : decorator;
@@ -122,7 +200,7 @@ Item {
                 height: 3;
                 color: Config.frame_color2
                 Behavior on x {
-                    NumberAnimation {duration:200}
+                    NumberAnimation { easing.type: Easing.Linear;duration:200}
                 }
             }
 
