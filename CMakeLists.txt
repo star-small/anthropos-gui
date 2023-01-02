@@ -12,10 +12,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
-
+find_package(Qt5 REQUIRED COMPONENTS Sql)
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
+        database.cpp
+        database.h
+        listmodel.h
+        listmodel.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -40,6 +44,7 @@ else()
         )
     endif()
 endif()
+target_link_libraries(AnthroposTracker PRIVATE Qt5::Sql)
 target_link_libraries(AnthroposTracker
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 set_target_properties(AnthroposTracker PROPERTIES
