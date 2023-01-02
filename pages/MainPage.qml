@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls 1.4 as Con
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Window 2.15
@@ -9,6 +10,7 @@ Item {
     id: root
     anchors.top: topBar.bottom
     signal toBackClicked()
+
     Drawer {
             id: sidePanel
             width: 0.66 * parent.width
@@ -204,6 +206,44 @@ Item {
                 }
             }
 
+    Con.TableView {
+        id: tableView
+        anchors.top: rowLayout.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.margins: 5
 
+        Con.TableViewColumn {
+            role: "scale"
+            title: "Имя"
+        }
+        Con.TableViewColumn {
+            role: "category"
+            title: "Фамилия"
+        }
+        Con.TableViewColumn {
+            role: "date"
+            title: "НИК"
+        }
+
+        model: myModel
+
+        // Настройка строки в TableView для перехавата левого клика мыши
+        rowDelegate: Rectangle {
+            anchors.fill: parent
+            color: styleData.selected ? 'skyblue' : (styleData.alternate ? 'whitesmoke' : 'white');
+            MouseArea {
+                anchors.fill: parent
+                acceptedButtons: Qt.RightButton | Qt.LeftButton
+                onClicked: {
+                    tableView.selection.clear()
+                    tableView.selection.select(styleData.row)
+                    tableView.currentRow = styleData.row
+                    tableView.focus = true
+                }
+            }
+        }
+    }
 
 }

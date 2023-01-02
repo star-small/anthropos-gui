@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls 1.4 as Con
 import QtQuick.Controls.Material 2.15
 import "../components"
 import "../config"
@@ -72,8 +73,13 @@ Item {
                 popup.close()
                 root.mainFeelClicked()
                 mainFeelClicked()
+                console.log(choose)
+
+                database.inserIntoTable("wefewg", choose, "edawefwd")
+                myModel.updateModel()
             }
         }
+
 
     }
 }
