@@ -78,7 +78,7 @@ bool DataBase::inserIntoTable(const QVariantList &data)
     query.bindValue(":Scale",       data[0].toString());
     query.bindValue(":Category",       data[1].toString());
     query.bindValue(":Date",         data[2].toString());
-
+    //query.prepare("delete from " TABLE);
     if(!query.exec()){
         qDebug() << "error insert into " << TABLE;
         qDebug() << query.lastError().text();

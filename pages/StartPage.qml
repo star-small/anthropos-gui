@@ -1,4 +1,5 @@
 import QtQuick 2.15
+import QtQml 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls 1.4 as Con
 import QtQuick.Controls.Material 2.15
@@ -70,14 +71,13 @@ Item {
             //spaces: 3
             width: parent.width
             onFeelClicked: (choose)=>{
-                popup.close()
-                root.mainFeelClicked()
-                mainFeelClicked()
-                console.log(choose)
-
-                database.inserIntoTable("wefewg", choose, "edawefwd")
-                myModel.updateModel()
-            }
+                               popup.close()
+                               root.mainFeelClicked()
+                               mainFeelClicked()
+                               console.log(choose)
+                               database.inserIntoTable(choose, "general", Date().toLocaleString())
+                               myModel.updateModel()
+                           }
         }
 
 

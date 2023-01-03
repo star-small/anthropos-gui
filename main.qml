@@ -9,8 +9,6 @@ import "components"
 import "config"
 
 Window {
-
-
     id: window
     width: 412 - 70
     height: 732 -70
@@ -18,21 +16,19 @@ Window {
     title: qsTr("Hello World")
     color: Config.bg_color
 
-
-
     StackView {
         id: stackView
         initialItem: startPage
         anchors.fill: parent
         pushEnter: Transition {
-                PropertyAnimation {
-                    property: "x"
-                    easing.type: Easing.OutQuad
-                    from: window.width
-                    to:0
-                    duration: 200
-                }
+            PropertyAnimation {
+                property: "x"
+                easing.type: Easing.OutQuad
+                from: window.width
+                to:0
+                duration: 200
             }
+        }
     }
 
     StartPage {
@@ -42,9 +38,6 @@ Window {
         onMainFeelClicked: {
             stackView.push(mainPage)
         }
-
-
-
     }
 
     MainPage {

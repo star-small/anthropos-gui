@@ -12,53 +12,53 @@ Item {
     signal toBackClicked()
 
     Drawer {
-            id: sidePanel
-            width: 0.66 * parent.width
-            height: parent.height //- topBar.height
-            y: topBar.height
-            interactive: root.visible
-            background: Rectangle {
-                color: Config.darkFrame
-                    Rectangle {
-                        id: events
-                        opacity: 1.0
-                        radius: 0
-                        width: parent.width
-                        height: 40
-                        color: Config.frame_color
-                        Text {
-                            id: name
-                            anchors.centerIn: parent
-                            opacity: 1
-                            color: Config.text_color
-                            text: qsTr("Events")
-                        }
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                stackView.replace(eventPage)
-                                sidePanel.close()
-                            }
-                        }
+        id: sidePanel
+        width: 0.66 * parent.width
+        height: parent.height //- topBar.height
+        y: topBar.height
+        interactive: root.visible
+        background: Rectangle {
+            color: Config.darkFrame
+            Rectangle {
+                id: events
+                opacity: 1.0
+                radius: 0
+                width: parent.width
+                height: 40
+                color: Config.frame_color
+                Text {
+                    id: name
+                    anchors.centerIn: parent
+                    opacity: 1
+                    color: Config.text_color
+                    text: qsTr("Events")
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        stackView.replace(eventPage)
+                        sidePanel.close()
                     }
-                    Rectangle {
-                        opacity: 1.0
-                        radius: 0
-                        width: parent.width
-                        height: 40
-                        y: events.height + 5
-                        color: Config.frame_color
-                        Text {
-                            anchors.centerIn: parent
-                            opacity: 1
-                            color: Config.text_color
-                            text: qsTr("To do")
-                        }
-
                 }
             }
-            Component.onCompleted: {
+            Rectangle {
+                opacity: 1.0
+                radius: 0
+                width: parent.width
+                height: 40
+                y: events.height + 5
+                color: Config.frame_color
+                Text {
+                    anchors.centerIn: parent
+                    opacity: 1
+                    color: Config.text_color
+                    text: qsTr("To do")
+                }
+
             }
+        }
+        Component.onCompleted: {
+        }
         onClosed: {
             topBar.btnState = "show"
         }
@@ -114,8 +114,8 @@ Item {
             id: flick
             anchors.fill: parent
             spacing: 2
-                width: parent.width
-                height: name.height
+            width: parent.width
+            height: name.height
             Text {
                 z: -1
                 anchors.fill: parent
@@ -195,16 +195,16 @@ Item {
 
     }
     Rectangle {
-                id : decorator;
-                x: bar.currentItem.width * bar.currentIndex+1
-                anchors.bottom: bar.top;
-                width: tb.width;
-                height: 3;
-                color: Config.frame_color2
-                Behavior on x {
-                    NumberAnimation { easing.type: Easing.Linear;duration:200}
-                }
-            }
+        id : decorator;
+        x: bar.currentItem.width * bar.currentIndex+1
+        anchors.bottom: bar.top;
+        width: tb.width;
+        height: 3;
+        color: Config.frame_color2
+        Behavior on x {
+            NumberAnimation { easing.type: Easing.Linear;duration:200}
+        }
+    }
 
     Con.TableView {
         id: tableView
@@ -216,15 +216,15 @@ Item {
 
         Con.TableViewColumn {
             role: "scale"
-            title: "Имя"
+            title: "Шкала"
         }
         Con.TableViewColumn {
             role: "category"
-            title: "Фамилия"
+            title: "Категория"
         }
         Con.TableViewColumn {
             role: "date"
-            title: "НИК"
+            title: "Дата"
         }
 
         model: myModel
